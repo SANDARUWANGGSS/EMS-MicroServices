@@ -1,5 +1,6 @@
 package com.MicroServicesL.employeeservice.controller;
 
+import com.MicroServicesL.employeeservice.dto.ApiResponseDto;
 import com.MicroServicesL.employeeservice.dto.EmployeeDto;
 import com.MicroServicesL.employeeservice.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,9 @@ public class EmployeeController
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable Long id)
+    public ResponseEntity<ApiResponseDto> getEmployee(@PathVariable Long id)
     {
-        EmployeeDto employeeDto = employeeService.getEmployeeById(id);
-        return new ResponseEntity<>(employeeDto,HttpStatus.OK);
+        ApiResponseDto apiResponseDto = employeeService.getEmployeeById(id);
+        return new ResponseEntity<>(apiResponseDto,HttpStatus.OK);
     }
 }

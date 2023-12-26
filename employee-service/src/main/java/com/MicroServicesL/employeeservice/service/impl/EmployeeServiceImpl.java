@@ -1,5 +1,6 @@
 package com.MicroServicesL.employeeservice.service.impl;
 
+import com.MicroServicesL.employeeservice.dto.ApiResponseDto;
 import com.MicroServicesL.employeeservice.dto.DepartmentDto;
 import com.MicroServicesL.employeeservice.dto.EmployeeDto;
 import com.MicroServicesL.employeeservice.entity.Employee;
@@ -40,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService
     }
 
     @Override
-    public EmployeeDto getEmployeeById(Long id) {
+    public ApiResponseDto getEmployeeById(Long id) {
         Employee employee = employeeRepository.findById(id).get();
 
 //        Communication with Rest Template
@@ -57,6 +58,10 @@ public class EmployeeServiceImpl implements EmployeeService
                 employee.getEmail(),
                 employee.getDepartmentCode()
         );
-        return employeeDto;
+
+        ApiResponseDto apiResponseDto = new ApiResponseDto();
+        apiResponseDto.setEmployeeDto(employeeDto);
+        apiResponseDto.setDepartmentDto(departmentDto);
+        return apiResponseDto;
     }
 }
