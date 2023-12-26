@@ -19,8 +19,8 @@ public class EmployeeServiceImpl implements EmployeeService
                 employeeDto.getId(),
                 employeeDto.getFirstName(),
                 employeeDto.getLastName(),
-                employeeDto.getEmail(),
-                employeeDto.getDepartmentCode()
+                employeeDto.getEmail()
+//                employeeDto.getDepartmentCode()
         );
 
         Employee savedEmployee = employeeRepository.save(employee);
@@ -29,9 +29,22 @@ public class EmployeeServiceImpl implements EmployeeService
                 savedEmployee.getId(),
                 savedEmployee.getFirstName(),
                 savedEmployee.getLastName(),
-                savedEmployee.getEmail(),
-                savedEmployee.getDepartmentCode()
+                savedEmployee.getEmail()
+//                savedEmployee.getDepartmentCode()
         );
         return savedEmployeeDto;
+    }
+
+    @Override
+    public EmployeeDto getEmployeeById(Long id) {
+        Employee employee = employeeRepository.findById(id).get();
+        EmployeeDto employeeDto = new EmployeeDto(
+                employee.getId(),
+                employee.getFirstName(),
+                employee.getLastName(),
+                employee.getEmail()
+//                employee.getDepartmentCode()
+        );
+        return employeeDto;
     }
 }
