@@ -4,7 +4,11 @@ import com.MicroSrvicesL.departmentservice.dto.DepartmentDto;
 import com.MicroSrvicesL.departmentservice.entity.Department;
 import com.MicroSrvicesL.departmentservice.repository.DepartmentRepository;
 import com.MicroSrvicesL.departmentservice.service.DepartmentService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@AllArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService {
     private DepartmentRepository departmentRepository;
     @Override
